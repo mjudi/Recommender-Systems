@@ -64,9 +64,8 @@ books = books[,.(book_id,work_id,goodreads_book_id,primary_author=unlist(lapply(
 books = merge(x= books,y=main_tags,by="goodreads_book_id")
 ```
 
-
 ##Exploratory Data Analysis
-Create a new books data.table called books_wide by ìmeltingî the genre columns.
+Create a new books data.table called books_wide by ‚Äúmelting‚Äù the genre columns.
 
 ```{r}
 books_wide = melt(books, id.vars = names(books)[!names(books) %in% main_tags_labels],measure.vars = main_tags_labels,variable.name = "genre",value.name = "in_genre")
@@ -194,7 +193,7 @@ user_item_mat = dcast(ratings, user_id ~ book_id, value.var = "rating")
 user_item_mat = user_item_mat[,1:501]
 ```
 
-Create a subset of user_item_mat, for user_idís only in test_users
+Create a subset of user_item_mat, for user_id‚Äôs only in test_users
 
 ```{r}
 user_item_mat_test = user_item_mat[user_id %in% test_users]
@@ -224,7 +223,7 @@ print(i)
 
 For the first 10 rows (user) in user_item_mat_test:
 1. Use the Euclidean Distance metric to find the 5 most similar users in user_item_mat.
-2. Find the highest rated book_idís for the 5 most similar users
+2. Find the highest rated book_id‚Äôs for the 5 most similar users
 
 ```{r}
 recommendation_list_cf=list()
